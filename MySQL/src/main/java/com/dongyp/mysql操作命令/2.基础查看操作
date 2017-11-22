@@ -1,0 +1,18 @@
+1.查看当前用户
+select user();
+
+2.查看用户权限
+show grants;
+show grants for root@localhost;
+
+3.查看所有数据库
+show databases;
+
+4.查看当前数据库;
+select database();
+
+5.查看所有表
+show tables; //需要先选定数据库
+
+6.查看表结构
+describe table_name;

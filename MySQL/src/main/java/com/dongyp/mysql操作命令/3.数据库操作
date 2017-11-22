@@ -1,0 +1,8 @@
+1.创建数据库
+create database database_name;
+
+2.选择数据库
+use database_name;
+
+3.删除数据库
+drop datebase database_name;

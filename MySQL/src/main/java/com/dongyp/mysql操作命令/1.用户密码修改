@@ -1,0 +1,7 @@
+1.使用命令修改
+set password=password('root123');
+set password for root@localhost =password('root123');
+
+2.直接修改user表
+update user set authentication_string=password('root123') where host='localhost' and user='root';
+flush privileges; //将当前user和privilige表中的用户信息/权限设置从mysql库(MySQL数据库的内置库)中提取到内存里。

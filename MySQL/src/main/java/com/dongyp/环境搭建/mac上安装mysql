@@ -1,0 +1,11 @@
+1.使用Homebrew安装mysql
+brew install mysql
+
+2.查看mysql的安装信息
+brew info mysql
+
+3.启动mysql服务
+brew services start mysql
+brew services stop mysql
+mysql.server start
+mysql.server stop

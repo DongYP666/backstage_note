@@ -1,0 +1,5 @@
+1.使用root身份登录mysql
+mysql -hlocalhost -uroot -p
+
+2.退出mysql
+exit

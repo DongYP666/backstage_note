@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/JAVA/pom.xml" />
+        <option value="$PROJECT_DIR$/MySQL/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/MySQL/src/main/java/com/dongyp/mysql操作命令/2.显示操作" />
+    <file url="file://$PROJECT_DIR$/MySQL/src/main/java/com/dongyp/mysql操作命令/2.显示操作" />
+  </component>
   <component name="masterDetails">
     <states>
       <state key="ProjectJDKs.UI">
