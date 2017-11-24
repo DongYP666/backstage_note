@@ -16,3 +16,7 @@ show tables; //需要先选定数据库
 
 6.查看表结构
 describe table_name;
+
+7.查看存储引擎
+show engines;
+

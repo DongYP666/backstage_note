@@ -1,0 +1,32 @@
+1.增
+insert into students values(11,'aa',0,20,1000,'新增第一条');
+insert into students (name,sex,age,count,test_column) values ('aa',0,20,1000,'新增第一条');
+// 对于bit数据类型,可以是(true or false),(1 ro 0),(b'1' or b'0')
+
+2.删
+delete from students; //慎重！记得加where
+delete from students where id='11';
+
+3.改
+update students set age=11; //慎重！记得加where
+update students set age=11 where id='11';
+
+4.查
+select * from students;
+select * from students where age=20 and count=1000;
+select name,sex+0,age from students; // 对于bit类型数据的查询:十进制(sex+0), 二进制(bin(sex+0)), 八进制(oct(sex+0)), 十六进制(hex(sex+0))
+select name as my_name,sex+0 as my_sex,age as my_age from students; //取别名
+select distinct name,sex+0,age from students; // 去重
+
+like,in,between
+select name,sex,age from students where name like 'a%'; // 查询name以a开头的数据
+select name,sex,age from students where name not like '%a'; // 查询name不以a结尾的数据
+select name,sex,age from students where name in ('aa','bb');
+select name,sex,age from students where count between 1 and 1000;
+
+order by
+select name,sex,age from students where sex=b'0' order by id desc,age asc;
+
+limit
+select name,sex,age from students limit 3;
+

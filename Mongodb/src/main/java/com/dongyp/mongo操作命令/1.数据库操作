@@ -1,0 +1,24 @@
+1.查看数据库(只显示有数据的数据库)
+> show dbs
+
+2.进入数据库
+> use test
+
+3.查看当前操作数据库
+> db
+
+4.在进入的数据库中新增collection集合
+> use test
+> db.collection.insert({name:'dongyp'})
+
+5.删除数据库
+> use test
+> db.dropDatabase()
+
+6.查看集合
+> show tables
+
+6.删除集合
+> db.collection.drop()
+
+

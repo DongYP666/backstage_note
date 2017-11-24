@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JAVA/JAVA.iml" filepath="$PROJECT_DIR$/JAVA/JAVA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mongodb/Mongodb.iml" filepath="$PROJECT_DIR$/Mongodb/Mongodb.iml" />
       <module fileurl="file://$PROJECT_DIR$/MySQL/MySQL.iml" filepath="$PROJECT_DIR$/MySQL/MySQL.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/study.iml" filepath="$PROJECT_DIR$/.idea/study.iml" />
     </modules>

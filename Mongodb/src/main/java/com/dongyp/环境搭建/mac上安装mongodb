@@ -1,0 +1,28 @@
+1.使用Homebrew安装mongodb
+brew install mongodb
+
+2.查看mongodb安装信息
+brew info mongodb
+
+3.启动mongodb服务
+brew services start mongodb
+brew services stop mongodb
+
+建立一个数据库存储目录（因为默认的目录就是这个路径,没有的话启动失败）
+sudo mkdir -p /data/db
+将mongo/bin添加到path里
+cd ~
+vi .bash_profile
+export PATH=$PATH:/usr/local/Cellar/mongodb/3.4.10/bin
+source .bash_profile
+执行mongod
+sudo mongod
+至此服务就启动了
+
+终止服务
+在mongo命令行下输入
+> use admin
+> db.shutdownServer()
+
+4.连接到mongo
+mongo

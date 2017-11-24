@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="JAVA" />
+        <module name="Mongodb" />
         <module name="MySQL" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="JAVA" target="1.5" />
+      <module name="Mongodb" target="1.5" />
       <module name="MySQL" target="1.5" />
     </bytecodeTargetLevel>
   </component>

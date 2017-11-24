@@ -1,0 +1,135 @@
+1.插入文档 insert()
+    db.COLLECTION_NAME.insert(document)
+
+    collection_name 是我们的集合名，如果该集合不在该数据库中， MongoDB 会自动创建该集合并插入文档。
+    > db.collection_name.insert({name:'ddd',sex:'男',age:20})
+
+    将数据定义为一个变量,再插入变量
+    > document=({name:'ddd',sex:'男',age:20,array:['111','222','333']})
+    > db.collection_name.insert(document)
+
+     db.collection.insertOne():向指定集合中插入一条文档数据
+    > db.collection.insertOne({name:'aaa'})
+     db.collection.insertMany():向指定集合中插入多条文档数据
+    > db.collection.insertMany([{name:'aaa'},{name:'bbb'}])
+
+2.更新文档 update()
+    db.collection.update(
+       <query>,
+       <update>,
+       {
+         upsert: <boolean>,
+         multi: <boolean>,
+         writeConcern: <document>
+       }
+    )
+    upsert : 可选，这个参数的意思是，如果不存在update的记录，是否插入objNew,true为插入，默认是false，不插入。
+    multi : 可选，mongodb 默认是false,只更新找到的第一条记录，如果这个参数为true,就把按条件查出来多条记录全部更新。
+    writeConcern :可选，抛出异常的级别。
+
+    // 将name为'aaa'的第一条文档更新为{age:'11'}
+    > db.collection.update({name:'aaa'},{age:'11'})
+
+    // 将name为'aaa'的第一条文档的age字段更新为'11'
+    > db.collection.update({name:'aaa'},{$set:{age:'11'}})
+
+    // 将name为'aaa'的所有文档的age字段更新为'11'
+    > db.collection.update({name:'aaa'},{$set:{age:'11'}},{multi:true})
+    > db.collection.update({name:'aaa'},{$set:{age:'11'}},false,true)
+
+3.save() 方法通过传入的文档来替换已有文档
+    db.collection.save(
+       <document>,
+       {
+         writeConcern: <document>
+       }
+    )
+
+    // 查找id为"5a16c12f11f2a8f8f90bb9bc"的文档,有则改之,无则新增
+    > db.collection.save({"_id":ObjectId("5a16c12f11f2a8f8f90bb9bc"),"name":"dongyp","age":"20"})
+
+    // 新增一个文档
+    > db.collection.save({"name":"dongyp","age":"20"})
+
+4.删除文档 remove()
+    db.collection.remove(
+       <query>,
+       {
+         justOne: <boolean>,
+         writeConcern: <document>
+       }
+    )
+
+    // 删除name为dongyp的所有文档
+    > db.collection.remove({"name":"dongyp"})
+
+    // 删除name为dongyp的所有文档
+    > db.collection.remove({"name":"dongyp"},{justOne:true})
+    > db.collection.remove({"name":"dongyp"},true)
+
+5.查询文档 find()
+    db.collection.find(query, projection)
+    query ：可选，使用查询操作符指定查询条件
+    projection ：可选,使用投影操作符指定返回的键。查询时返回文档中所有键值,只需省略该参数即可（默认省略）。
+
+    如果你需要以易读的方式来读取数据，可以使用 pretty() 方法，语法格式如下：
+    db.collection.find().pretty()
+
+    // 查询名称为'ddd'的文档信息
+    db.students.find({"name":"ddd"})
+
+    // 查询名称为'ddd'的文档name和age字段值
+    db.students.find({"name":"ddd"},{"name":true, "age":true})
+
+    findOne()只返回一个文档
+
+    等于	        {<key>:<value>}	        db.col.find({"name":"dongyp"}).pretty()	    where name = 'dongyp'
+    小于	        {<key>:{$lt:<value>}}	db.col.find({"age":{$lt:20}}).pretty()	    where age < 20
+    小于或等于	{<key>:{$lte:<value>}}	db.col.find({"age":{$lte:20}}).pretty()	    where age <= 20
+    大于	        {<key>:{$gt:<value>}}	db.col.find({"age":{$gt:20}}).pretty()	    where age > 20
+    大于或等于	{<key>:{$gte:<value>}}	db.col.find({"age":{$gte:20}}).pretty()	    where age >= 20
+    不等于	    {<key>:{$ne:<value>}}	db.col.find({"age":{$ne:20}}).pretty()	    where age != 20
+
+    and or 条件
+    db.col.find({key1:value1, key2:value2}).pretty()
+    db.col.find({$or: [{key1: value1}, {key2:value2}]}).pretty()
+
+    $type 操作符
+    // 查询 "col" 集合中 name 为 String 的数据
+    > db.col.find({"name" : {$type : 2}})
+
+    Double	                1
+    String	                2
+    Object	                3
+    Array	                4
+    Binary data	            5
+    Undefined	            6	已废弃。
+    Object id	            7
+    Boolean	                8
+    Date	                9
+    Null	                10
+    Regular Expression	    11
+    JavaScript	            13
+    Symbol	                14
+    JavaScript (with scope)	15
+    32-bit integer	        16
+    Timestamp	            17
+    64-bit integer	        18
+    Min key	                255	Query with -1.
+    Max key	                127
+
+    limit() and skip() 方法
+    读取指定数量的数据记录
+    db.collection.find().limit(NUMBER)
+    除了可以使用limit()方法来读取指定数量的数据外，还可以使用skip()方法来跳过指定数量的数据
+    db.collection.find().limit(NUMBER).skip(NUMBER)
+
+    //查询col集合中第二条文档的title信息
+    > db.col.find({},{"title":1,_id:0}).limit(1).skip(1)
+
+    sort() 排序方法
+    sort()方法可以通过参数指定排序的字段，并使用 1 和 -1 来指定排序的方式，其中 1 为升序排列，而-1是用于降序排列
+    db.collection.find().sort({KEY:1})
+
+    // 按照年龄升序排列
+    > db.collection.find().sort({age:1})

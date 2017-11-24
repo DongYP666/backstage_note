@@ -1,0 +1,10 @@
+1.数据库连接
+使用用户 admin 使用密码 123456 连接到本地的 MongoDB 服务上。
+> mongodb://admin:123456@localhost
+> mongodb://admin:123456@localhost/baz
+
+连接 replica set 三台服务器 (端口 27017, 27018, 和27019):
+> mongodb://localhost,localhost:27018,localhost:27019
+
+连接 replica set 三台服务器, 写入操作应用在主服务器 并且分布查询到从服务器。
+> mongodb://host1,host2,host3/?slaveOk=true

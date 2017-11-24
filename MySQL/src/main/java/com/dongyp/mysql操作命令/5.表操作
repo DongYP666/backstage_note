@@ -1,0 +1,28 @@
+1.创建表
+create table students (
+id bigint not null auto_increment,
+name varchar(20) default '' comment '姓名',
+sex bit default 0 comment '性别',
+age tinyint default 0 comment '年龄',
+count int default 0 comment '数量',
+primary key(id)
+)engine=Innodb auto_increment=1 default charset=utf8 comment '新建一个表';
+
+2.删除表
+drop table students;
+
+3.在表中添加列
+alter table students add column test_column varchar(10) default '' comment '测试一下';
+
+4.在表中删除列
+alter table students drop column test_column;
+
+5.在表中修改列的数据类型,不修改列名
+modify --- alter table students modify column test_column varchar(10) default '' comment '测试一下';
+change --- alter table students change test_column test_column varchar(10) default '' comment '测试一下';
+
+6.在表中修改列名,必须要指定修改后的数据类型
+alter table students change test_column1 test_column2 varchar(10) default '' comment '测试一下';
+
+7.在表中修改列的默认值
+alter table students alter test_column set default '测试一下';
