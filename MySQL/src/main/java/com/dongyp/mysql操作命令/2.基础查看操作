@@ -20,3 +20,7 @@ describe table_name;
 7.查看存储引擎
 show engines;
 
+8.查看建表语句
+show create table table_name;
+
+

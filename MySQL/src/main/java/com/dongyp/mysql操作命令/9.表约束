@@ -1,0 +1,49 @@
+1. constraint
+SQL 约束用于规定表中的数据规则。
+如果存在违反约束的数据行为，行为会被约束终止。
+约束可以在创建表时规定（通过 CREATE TABLE 语句），或者在表创建之后规定（通过 ALTER TABLE 语句）。
+
+•	NOT NULL - 指示某列不能存储 NULL 值。
+•	UNIQUE - 保证某列的每行必须有唯一的值。
+•	PRIMARY KEY - NOT NULL 和 UNIQUE 的结合。确保某列（或两个列多个列的结合）有唯一标识，有助于更容易更快速地找到表中的一个特定的记录。
+•	FOREIGN KEY - 保证一个表中的数据匹配另一个表中的值的参照完整性。
+•	CHECK - 保证列中的值符合指定的条件。
+•	DEFAULT - 规定没有给列赋值时的默认值
+
+//创建时新增约束
+create table table_name (
+name varchar(20) primary key,
+age tinyint unique
+);
+
+create table table_name (
+name varchar(20),
+age tinyint,
+constraint constraint_1 primary key(name),
+constraint constraint_2 unique(name,age)
+);
+
+create table table_name (
+name varchar(20),
+age tinyint,
+primary key(name),
+unique(name,age)
+);
+
+//创建后规定约束
+alter table table_name alter column_name set default '';
+alter table table_name add unique(name);
+alter table table_name add constraint constraint_name unique(name);
+alter table table_name add check(age > 0); //不知道为什么执行成功但是没有生效
+alter table table_name auto_increment=100;
+
+//删除约束
+alter table table_name drop constraint constraint_name;
+//删除主键约束
+alter table table_name drop primary key;
+//删除唯一键约束
+alter table table_name drop index age; //不是很明白为什么删除唯一约束用drop index
+
+
+
+

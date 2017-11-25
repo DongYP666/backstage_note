@@ -24,9 +24,22 @@ select name,sex,age from students where name not like '%a'; // 查询name不以a
 select name,sex,age from students where name in ('aa','bb');
 select name,sex,age from students where count between 1 and 1000;
 
+is null / is not null
+//where column_name = null 和 where column_name != null 是不生效的
+where column is null
+where column is not null
+
+group by
+select name,count(0) from test1 group by name;
+
 order by
 select name,sex,age from students where sex=b'0' order by id desc,age asc;
 
 limit
 select name,sex,age from students limit 3;
+
+
+
+
+
 

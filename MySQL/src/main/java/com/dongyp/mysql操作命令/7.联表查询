@@ -1,0 +1,22 @@
+1.内连接
+INNER JOIN：如果表中有至少一个匹配，则返回行
+select * from test1 as t1 inner join test2 as t2 on t1.id=t2.id
+
+2.左外连接
+LEFT JOIN：即使右表中没有匹配，也从左表返回所有的行。如果右表中没有匹配，则结果为 NULL。
+select * from test1 as t1 left join test2 as t2 on t1.id=t2.id
+
+3.右外连接
+RIGHT JOIN：即使左表中没有匹配，也从右表返回所有的行。如果左表中没有匹配，则结果为 NULL。
+select * from test1 as t1 right join test2 as t2 on t1.id=t2.id
+
+4.全外连接
+FULL JOIN：只要其中一个表中存在匹配，则返回行。结合了 LEFT JOIN 和 RIGHT JOIN 的结果 (mysql中不支持全外连接)
+select * from test1 as t1 full join test2 as t2 on t1.id=t2.id
+
+5.联合查询
+UNION 操作符用于合并两个或多个 SELECT 语句的结果集。
+请注意，UNION 内部的每个 SELECT 语句必须拥有相同数量的列。列也必须拥有相似的数据类型。同时，每个 SELECT 语句中的列的顺序必须相同。
+UNION 操作符选取不同的值。如果允许重复的值，请使用 UNION ALL
+UNION 结果集中的列名总是等于 UNION 中第一个 SELECT 语句中的列名。
+select name from test1 union select aaa from test2;
