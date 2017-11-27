@@ -34,7 +34,7 @@ unique(name,age)
 alter table table_name alter column_name set default '';
 alter table table_name add unique(name);
 alter table table_name add constraint constraint_name unique(name);
-alter table table_name add check(age > 0); //不知道为什么执行成功但是没有生效
+alter table table_name add check(age > 0); //不知道为什么执行成功但是没有生效 --- mysql不支持
 alter table table_name auto_increment=100;
 
 //删除约束
@@ -43,7 +43,3 @@ alter table table_name drop constraint constraint_name;
 alter table table_name drop primary key;
 //删除唯一键约束
 alter table table_name drop index age; //不是很明白为什么删除唯一约束用drop index
-
-
-
-

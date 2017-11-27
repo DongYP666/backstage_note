@@ -12,4 +12,11 @@ create index index_name on table_name(column(length));//如果是CHAR，VARCHAR�
 alter table table_name add index index_name(name);
 
 //删除索引
+drop index index_name on table_name;
 alter table table_name drop index index_name;
+
+组合索引
+如果对多列进行索引(组合索引)，列的顺序非常重要，MySQL仅能对索引最左边的前缀进行有效的查找。例如：
+假设存在组合索引it1c1c2(c1,c2)，查询语句select * from t1 where c1=1 and c2=2能够使用该索引。查询语句select * from t1 where c1=1也能够使用该索引。
+但是，查询语句select * from t1 where c2=2不能够使用该索引，因为没有组合索引的引导列，即，要想使用c2列进行查找，必需出现c1等于某值。
+
