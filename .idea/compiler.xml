@@ -14,11 +14,11 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="1.8">
-      <module name="JAVA" target="1.5" />
-      <module name="Linux" target="1.5" />
-      <module name="Maven" target="1.5" />
-      <module name="Mongodb" target="1.5" />
-      <module name="MySQL" target="1.5" />
+      <module name="JAVA" target="1.8" />
+      <module name="Linux" target="1.8" />
+      <module name="Maven" target="1.8" />
+      <module name="Mongodb" target="1.8" />
+      <module name="MySQL" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
